@@ -1,11 +1,7 @@
 " vim: set fdm=marker foldenable foldlevel=1 nospell:
 " File:          .config/nvim/init.vim
-" Author:        Jacky Alciné <yo@jacky.wtf>
 " Description:   The heart for Neovim.
-" Last Modified: 2015-11-02 22:33:39 PST
 "
-" This is my peronal setup for NeoVim. It works ~exactly~ the
-" way I expect it to. Any different would trip me up.
 
 " UTF-8 NWA style
 scriptencoding utf-8
@@ -72,7 +68,7 @@ set dictionary+=/usr/share/dict/connectives.gz
 set dictionary+=/usr/share/dict/web2a.gz
 set spellfile=~/.config/nvim/dict.custom.utf-8.add
 
-set cinoptions+='JN'
+set cinoptions+='RA'
 
 "{{{ White spacing and Characters
 " A problem that plagued me for months, having visual cues for white spacing
@@ -98,13 +94,16 @@ set listchars+=tab:\|\
 set sidescrolloff=1
 "}}}
 
+" Map jj to replace the escape key.
+:imap jj <Esc>
+
 " {{{ abbreviations
 " {{{ Identifiers
-iabbrev me_email yo@jacky.wtf
-iabbrev me_name Jacky Alciné
-iabbrev me_fname Jacky
-iabbrev me_lname Alciné
-iabbrev me_site https://jacky.wtf
+iabbrev me_email rocky.assad@premisehealth.com
+iabbrev me_name Rocky Assad
+iabbrev me_fname Rocky
+iabbrev me_lname Assad
+iabbrev me_site https://www.premisehealth.com
 " FIXME: Make this appear in Python files only.
 iabbrev s. self.
 " }}}
@@ -388,7 +387,7 @@ let g:gitgutter_sign_added = '++'
 let g:gitgutter_sign_modified = '**'
 let g:gitgutter_sign_removed = '--'
 let g:gitgutter_sign_modified_removed = '##'
-let g:github_user = 'jalcine'
+let g:github_user = 'fourq'
 let g:github_comment_open_browser = 1
 let g:tagbar_compact=1
 let g:tagbar_autoclose=1
@@ -439,7 +438,7 @@ let g:startify_files_number = 5
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 0
 let g:startify_relative_path = 1
-let g:startify_bookmarks = [ '~/.config/nvim/init.vim', '~/.bashrc', '~/code' ]
+let g:startify_bookmarks = [ '~/.config/nvim/init.vim', '~/.zshrc', '~/code' ]
 let g:startify_session_dir = '~/.config/nvim/sessions'
 
 let g:localvimrc_persistent = 1
@@ -469,6 +468,13 @@ let g:c_no_comment_fold = 1
 
 let g:test_strategy = 'neovim'
 
+" Hipchat
+let g:HIPCHAT_DOMAIN = 'premisehealth.hipchat.com'
+let g:HIPCHAT_TOKEN = 'hxEWcuHoDEBtkgHKFbthFerkRk2sT1XoKWdk1iQU'
+
+" Spotify
+let g:spotify_country_code = 'US'
+
 " {{{ neomake options
 let g:neomake_list_height = 5
 let g:neomake_serialize = 1
@@ -485,7 +491,7 @@ let g:sunset_longitude = -73.9
 " {{{ vim-airline options
 let g:airline_theme = 'tomorrow'
 let g:airline_detected_modified = 1
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline_detect_iminsert = 0
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -530,7 +536,7 @@ let g:NERDRemoveExtraSpaces = 1
 " }}}
 
 " {{{ ultisnips
-let g:snips_author = 'Jacky Alciné <yo@jacky.wtf>'
+let g:snips_author = 'Rocky Assad <rocky.assad@premisehealth.com>'
 let g:UltiSnipsEnableSnipMate = 1
 let g:UltiSnipsUsePythonVersion = 2
 let g:UltiSnipsEditSplit = 'context'
@@ -571,7 +577,6 @@ Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'bruno-/vim-man'
 Plug 'dsawardekar/portkey'
-Plug 'dsawardekar/ember.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elixir-lang/vim-elixir'
@@ -581,7 +586,7 @@ Plug 'embear/vim-localvimrc'
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'guns/xterm-color-table.vim'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'heavenshell/vim-slack'
+Plug 'pyohei/vim-hipchat'
 Plug 'int3/vim-extradite'
 Plug 'isRuslan/vim-es6'
 Plug 'jalcine/cmake.vim'
@@ -638,6 +643,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'flazz/vim-colorschemes'
 Plug 'rizzatti/dash.vim'
+Plug 'takac/vim-spotifysearch'
 
 call g:plug#end()
 " }}}
@@ -649,7 +655,7 @@ func! s:reload_tmux()
         \ '"[tmux <- vim] Sourced ' . expand('%:p') . '"')
 endfunc
 
-augroup jalcine
+augroup rassad
   au!
 
   " Funky files.
